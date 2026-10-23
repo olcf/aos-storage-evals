@@ -1,0 +1,11 @@
+Experiment Description
+======================
+
+This experiment uses the deep learning I/O benchmark to exercise the 
+data access patterns of popular AI/ML workloads during model training.
+
+The tests represent various workloads, including:
+
+* cosmoflow - the CosmoFlow 3D convolutional neural network workload using Tensorflow Keras
+* resnet50 - the ResNet50 3D image classification workload using Tensorflow
+* unet3d - the 3D medical image segmentation workload using PyTorch

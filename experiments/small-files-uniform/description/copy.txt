@@ -1,0 +1,17 @@
+Test Description
+================
+
+This test evaluates the dataset copy performance for the 'small-files-uniform'
+experiment. The test simulates the actions of a collection of coordinated
+parallel processes that read whole files from a source storage system and 
+write them to a copy of the dataset on the target storage system.
+
+Test Configuration
+==================
+
+This test utilizes the mpiFileUtils dcp utility to copy the dataset using N
+parallel processes, with each process responsible for roughly 1/N of the
+files and issuing sequential I/O operations.
+
+The associated dcp configuration file is:
+copy/scripts/config/dataset_copy_uniform_small_files.mfu-dcp.cfg

@@ -1,0 +1,16 @@
+Test Description
+================
+
+This test evaluates the dataset creation performance for the 'large-file'
+experiment. The test simulates the actions of a collection of coordinated
+parallel processes that write segments of the shared file.
+
+Test Configuration
+==================
+
+This test utilizes the ior benchmark to generate a dataset containing random
+data using N parallel writers, with each process responsible for 1/N of the 
+file's data and issuing large sequential I/O operations.
+
+The associated ior configuration file is:
+create/scripts/config/dataset_create_large_file.ior.cfg

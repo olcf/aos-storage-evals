@@ -1,0 +1,14 @@
+Test Description
+================
+
+This test evaluates the dataset removal performance for the
+'small-files-varied' experiment. 
+
+Test Configuration
+==================
+
+This test utilizes the mpiFileUtils drm utility to remove the dataset files
+using N parallel processes.
+
+The associated drm configuration file is:
+remove/scripts/config/dataset_remove_varied_small_files.mfu-drm.cfg

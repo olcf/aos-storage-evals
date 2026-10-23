@@ -1,0 +1,1 @@
+../../../../../scripts/experiment/elbencho/run-elbencho-parallel-test.slurm

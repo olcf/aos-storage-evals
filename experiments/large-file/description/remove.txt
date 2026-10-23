@@ -1,0 +1,13 @@
+Test Description
+================
+
+This test evaluates the dataset removal performance for the 'large-file'
+experiment. 
+
+Test Configuration
+==================
+
+This test utilizes the mpiFileUtils drm utility to remove the dataset.
+
+The associated drm configuration file is:
+remove/scripts/config/dataset_remove_large_file.mfu-drm.cfg

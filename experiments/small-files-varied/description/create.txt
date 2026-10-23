@@ -1,0 +1,17 @@
+Test Description
+================
+
+This test evaluates the dataset creation performance for the
+'small-files-varied' experiment. The test simulates the actions of a
+collection of coordinated parallel processes that write whole files.
+
+Test Configuration
+==================
+
+This test utilizes the fio benchmark to generate a dataset containing random
+data using N parallel writers, with each process responsible for roughly 1/N
+of the dataset's files. The file sizes within the dataset are normally
+distributed around the target file size.
+
+The associated ior configuration file is:
+create/scripts/config/dataset_create_varied_small_files.fio.cfg

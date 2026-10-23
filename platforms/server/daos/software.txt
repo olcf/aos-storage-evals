@@ -1,0 +1,96 @@
+# Information about 'aos' pool and relative storage usage
+
+> sudo dmg pool create -z 50T -t 2,98 --group=csc603 aos
+Creating DAOS pool with automatic storage allocation: 50 TB total, 2.00%,98.00% tier ratio
+Pool created with 2.00%,98.00% storage tier ratio
+-------------------------------------------------
+  UUID                 : dad0b3ba-f17c-4463-b630-f6b545d3f73c
+  Service Leader       : 0
+  Service Ranks        : [0-4]
+  Storage Ranks        : [0-15]
+  Total Size           : 50 TB
+  Storage tier 0 (SCM) : 1.0 TB (62 GB / rank)
+  Storage tier 1 (NVMe): 49 TB (3.1 TB / rank)
+
+2> sudo dmg pool query -e aos
+Pool dad0b3ba-f17c-4463-b630-f6b545d3f73c, ntarget=320, disabled=0, leader=0, version=1
+Pool space info:
+- Enabled targets: 0-15
+- Target(VOS) count:320
+- Storage tier 0 (SCM):
+  Total size: 1.0 TB
+  Free: 935 GB, min:2.9 GB, max:2.9 GB, mean:2.9 GB
+- Storage tier 1 (NVMe):
+  Total size: 49 TB
+  Free: 49 TB, min:153 GB, max:153 GB, mean:153 GB
+Rebuild idle, 0 objs, 0 recs
+
+> sudo dmg pool get-acl aos
+# Owner: root@
+# Owner Group: csc603@
+# Entries:
+A::OWNER@:rw
+A:G:GROUP@:rw
+
+> sudo dmg storage query usage
+Hosts SCM-Total SCM-Free SCM-Used NVMe-Total NVMe-Free NVMe-Used
+----- --------- -------- -------- ---------- --------- ---------
+daos1 322 GB    189 GB   41 %     38 TB      32 TB     17 %
+daos2 322 GB    189 GB   41 %     38 TB      32 TB     17 %
+daos3 322 GB    189 GB   41 %     38 TB      32 TB     17 %
+daos4 322 GB    189 GB   41 %     38 TB      32 TB     17 %
+daos5 322 GB    190 GB   41 %     38 TB      32 TB     17 %
+daos6 322 GB    190 GB   41 %     38 TB      32 TB     17 %
+daos7 322 GB    190 GB   41 %     38 TB      32 TB     17 %
+daos8 322 GB    190 GB   41 %     38 TB      32 TB     17 %
+
+> daos pool autotest aos
+Step Operation                 Status Time(sec) Comment
+  0  Initializing DAOS          PASS    0.000
+  1  Connecting to pool         PASS    0.017
+  2  Creating containers        PASS    0.007
+  3  Opening container          PASS    0.048
+ 10  Generating 1M S1 layouts   PASS    1.399   711.18K IO/sec
+ 11  Generating 10K SX layouts  PASS    0.014   710.42K IO/sec
+ 20  Inserting 128B values      PASS   30.016   225.11K IO/sec
+ 21  Reading 128B values back   PASS   28.897   233.81K IO/sec
+ 23  Punching object            PASS    0.495
+ 24  Inserting 4KB values       PASS   30.020   216.90K IO/sec
+ 25  Reading 4KB values back    PASS   41.430   138.39K IO/sec
+ 27  Punching object            PASS    0.490
+ 28  Inserting 1MB values       PASS   30.019    23.30K IO/sec
+ 29  Reading 1MB values back    PASS  160.157     7.73K IO/sec
+ 31  Punching object            PASS    0.245
+ 40  Inserting into RF1 cont    PASS   30.020   149.44K IO/sec
+ 41  Reading RF1 values back    PASS   23.114   216.83K IO/sec
+ 42  Inserting into RF2 cont    PASS   30.020   128.68K IO/sec
+ 43  Reading RF2 values back    PASS   21.588   216.99K IO/sec
+ 96  Closing containers         PASS    0.032
+ 97  Destroying containers      PASS    0.006
+ 98  Disconnecting from pool    PASS    0.001
+ 99  Tearing down DAOS          PASS    0.000
+
+All steps passed.
+
+# Information about 'aos' pre-defined containers
+
+> daos container create -t POSIX aos posix-default
+Successfully created container 90f68df2-2d4a-46e1-af32-f0ff23739abe
+  Container UUID : 90f68df2-2d4a-46e1-af32-f0ff23739abe
+  Container Label: posix-default
+  Container Type : POSIX
+
+> daos container query aos posix-default
+  Container UUID              : 90f68df2-2d4a-46e1-af32-f0ff23739abe
+  Container Label             : posix-default
+  Container Type              : POSIX
+  Pool UUID                   : dad0b3ba-f17c-4463-b630-f6b545d3f73c
+  Container redundancy factor : 0
+  Number of open handles      : 1
+  Latest open time            : 0x188d64f062c40000 (2024-07-03 14:57:05.764900864 -0400 EDT)
+  Latest close/modify time    : 0x188d64f078b00000 (2024-07-03 14:57:05.787887616 -0400 EDT)
+  Number of snapshots         : 0
+  Object Class                : UNKNOWN
+  Dir Object Class            : UNKNOWN
+  File Object Class           : UNKNOWN
+  Chunk Size                  : 1.0 MiB

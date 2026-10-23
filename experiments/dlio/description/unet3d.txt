@@ -1,0 +1,17 @@
+Test Description
+================
+
+This test evaluates the performance of the dlio_benchmark 'unet3d_h100' workload
+that uses a pre-generated dataset (~23GiB) consisting of 168 files shared by
+all analysis processes.
+
+Test Configuration
+==================
+
+This test uses the unmodified 'unet3d_h100' workload configuration, which
+reads the dataset 5 times, once per epoch, using PyTorch. In each epoch,
+data is read in batches of 7 whole files per process using 4 I/O threads. 
+The simulated NVIDIA H100 computation time per batch is 0.323 seconds.
+
+The associated dlio configuration file is:
+unet3d/scripts/config/unet3d.dlio.cfg

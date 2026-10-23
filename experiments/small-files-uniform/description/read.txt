@@ -1,0 +1,18 @@
+Test Description
+================
+
+This test evaluates the dataset analysis performance of the
+'small-files-uniform' experiment. The test simulates the actions of a 
+collection of uncoordinated parallel processes that read random batches 
+of whole files from the dataset in each analysis iteration. 
+
+Test Configuration
+==================
+
+This test uses the elbencho benchmark in parallel to independently perform the
+random read iterations. Over the course of multiple iterations, the entire
+shared dataset contents are read multiple times, but there is no temporal or
+spatial locality for reads from a given client.
+
+The associated ior configuration file is:
+read/scripts/config/dataset_read_uniform_small_files.elbencho.cfg

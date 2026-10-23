@@ -1,0 +1,14 @@
+Experiment Description
+======================
+
+This experiment simulates the use of an AI/ML training dataset composed
+of many small files with uniform size.
+
+The tests represent various stages of an AI/ML training workflow, including:
+
+* create - creation of the dataset on the target storage system
+* copy   - copying an existing dataset from a source storage system
+           to the target storage system
+* read   - analysis of the dataset residing on the target storage
+           system using uncoordinated random reads from many clients
+* remove - deletion of the dataset from the target storage system

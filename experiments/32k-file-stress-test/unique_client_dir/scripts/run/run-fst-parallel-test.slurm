@@ -1,0 +1,1 @@
+../../../../../scripts/experiment/fst/run-fst-parallel-test.slurm

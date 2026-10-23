@@ -1,0 +1,15 @@
+Experiment Description
+======================
+
+This experiment simulates a collection of independent, non-synchronized
+client processes all working on whole 32 KiB files. This workload
+generates a constant stream of metadata and data accesses, and the
+performance metric is files processed per second. The workload is split
+into two access patterns: create+write and stat+open+read. The tests
+are designed to allow measurement of these patterns in isolation
+and combined.
+
+The tests represent various client data organizations, including:
+
+* shared_dir        - all files reside in a directory shared by all clients
+* unique_client_dir - each client process utilizes its own unique directory

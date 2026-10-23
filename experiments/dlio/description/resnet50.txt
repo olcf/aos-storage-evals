@@ -1,0 +1,17 @@
+Test Description
+================
+
+This test evaluates the performance of the dlio_benchmark 'resnet50_h100' workload
+that uses a pre-generated dataset (~137GiB) consisting of 1024 files shared by
+all analysis processes. 
+
+Test Configuration
+==================
+
+This test uses the unmodified 'resnet50_h100' workload configuration, which
+reads the dataset one time per epoch across 5 epochs using Tensorflow and 
+8 I/O threads per process. Files are read in batches of 400.
+The simulated NVIDIA H100 computation time per batch is 0.224 seconds.
+
+The associated dlio configuration file is:
+resnet50/scripts/config/resnet50.dlio.cfg

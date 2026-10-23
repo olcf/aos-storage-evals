@@ -1,0 +1,17 @@
+Test Description
+================
+
+This test evaluates the performance of the dlio_benchmark 'cosmoflow_h100' workload
+that uses a pre-generated dataset (~1.4TiB) consisting of 524,288 files shared by
+all analysis processes. 
+
+Test Configuration
+==================
+
+This test uses the unmodified 'cosmoflow_h100' workload configuration, which
+reads the dataset one time per epoch across 5 epochs using Tensorflow and 
+4 I/O threads per process. Files are read and processed one at a time.
+The simulated NVIDIA H100 computation time per file is 0.00350 seconds.
+
+The associated dlio configuration file is:
+cosmoflow/scripts/config/cosmoflow.dlio.cfg

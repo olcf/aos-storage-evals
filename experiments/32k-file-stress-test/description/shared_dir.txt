@@ -1,0 +1,21 @@
+Test Description
+================
+
+This test evaluates the performance of the '32k-file-stress-test' experiment for
+client processes all sharing a single directory.
+
+The test simulates the actions of a collection of independent, unsynchronized 
+parallel processes that all try to process as many files as possible using
+two distinct whole-file access patterns: create+write and stat+open+read.
+The patterns can be exercised independently or together.
+
+Test Configuration
+==================
+
+This test utilizes the file-stress-test benchmark with the independent
+processes all doing whole-file 32 KiB I/Os.
+
+The associated fio configuration files are:
+shared_dir/scripts/config/create_write.fst.cfg
+shared_dir/scripts/config/stat_open_read.fst.cfg
+shared_dir/scripts/config/create_write_stat_open_read.fst.cfg
